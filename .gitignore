@@ -1,0 +1,10 @@
+cfg
+*.log*
+wip/
+nextflow-autodownload-databases/
+work/
+.nextflow/
+results/
+centrifuge-cloud/
+20190930_fungi_example_data/
+fungi*
