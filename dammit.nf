@@ -80,8 +80,12 @@ workflow download_dammit {
     
     main:
         if (!params.cloudProcess) { dammitGetDB(busco_db_ch) ; database_dammit = dammitGetDB.out }
-        if (params.cloudProcess) { 
-            dammit_db_preload = file("${params.cloudDatabase}/dammit/${params.busco}/dbs")
+        if (params.cloudProcess) {
+            if (params.full) {
+                dammit_db_preload = file("${params.cloudDatabase}/dammit-full/${params.busco}/dbs")
+            } else {
+                dammit_db_preload = file("${params.cloudDatabase}/dammit/${params.busco}/dbs")
+            }
             if (dammit_db_preload.exists()) { database_dammit = dammit_db_preload }
             else  { dammitGetDB(busco_db_ch); database_dammit = dammitGetDB.out }
         }
@@ -143,6 +147,7 @@ def helpMSG() {
     --cores             max cores for local use [default: $params.cores]
     --memory            memory limitations for polisher tools in GB [default: $params.memory]
     --output            name of the result folder [default: $params.output]
+    --full              load the (large!) uniref90 database [default: $params.full]
     --busco             the database used with BUSCO [default: $params.busco]
       ${c_dim}full list of available data sets at https://busco.ezlab.org/v2/frame_wget.html${c_reset}
 
