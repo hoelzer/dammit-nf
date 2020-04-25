@@ -147,7 +147,7 @@ def helpMSG() {
     --cores             max cores for local use [default: $params.cores]
     --memory            memory limitations for polisher tools in GB [default: $params.memory]
     --output            name of the result folder [default: $params.output]
-    --full              load the (large!) uniref90 database [default: $params.full]
+    --full              load the uniref90 database ((large! takes ages!)) [default: $params.full]
     --busco             the database used with BUSCO [default: $params.busco]
       ${c_dim}full list of available data sets at https://busco.ezlab.org/v2/frame_wget.html${c_reset}
 
