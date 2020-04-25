@@ -163,11 +163,12 @@ def helpMSG() {
     --cachedir          defines the path where images (singularity) are cached [default: $params.cachedir] 
 
     Profile:
-    Please merge profiles
-    -profile                 local,docker (conda also available)
-                             lsf,docker (HPC w/ LSF, singularity/docker)
-                             lsf,docker, singularity (adjust workdir and cachedir according to your HPC config)
-                             gcloudMartin,docker (googlegenomics with docker)
+    Merge profiles comma-separated
+    -profile                 local,docker
+                             local,conda
+                             lsf,docker,singularity (adjust workdir and cachedir according to your HPC config)
+                             slurm,conda (adjust workdir and cachedir according to your HPC config)
+                             gcloudMartin,docker (GCP google-lifescience with docker)
                              ${c_reset}
     """.stripIndent()
 }
