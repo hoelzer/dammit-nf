@@ -10,10 +10,14 @@ process dammit {
     tuple val(name), path("dammit")
 
   script:
+    if (params.full)
+    """
+    BUSCO=\$(echo ${params.busco} | awk 'BEGIN{FS="_"};{print \$1}')
+    dammit annotate ${transcriptome} --database-dir \${PWD}/dbs --busco-group \${BUSCO} -n ${name} -o dammit --n_threads ${task.cpus} --full 
+    """
+    else
     """
     BUSCO=\$(echo ${params.busco} | awk 'BEGIN{FS="_"};{print \$1}')
     dammit annotate ${transcriptome} --database-dir \${PWD}/dbs --busco-group \${BUSCO} -n ${name} -o dammit --n_threads ${task.cpus} #--full 
     """
   }
-
-/* TODO test full parameter */
