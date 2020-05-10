@@ -34,4 +34,4 @@ nextflow run dammit.nf --fasta '*.fasta' --cachedir /hps/$USER/singularity --wor
 
 # Workflow
 
-![image](https://github.com/hoelzer/dammit-nf/blob/master/figures/chart.png?raw=true)
+![image](figures/chart.png)
